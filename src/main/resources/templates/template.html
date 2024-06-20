@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+  <script src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-md">
+    <a class="navbar-brand" th:href="@{/}">KhirLina</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" th:href="@{/action/all}">Action</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/admin/members}">Members</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/admin/users}">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/about}">À propos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+<section layout:fragment="content" class="min-vh-100">
+</section>
+<footer class="bg-light text-center py-3">
+  <p>&copy; 2024 khire lina</p>
+</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>
