@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -24,4 +25,7 @@ public class Vol {
     @ManyToOne
     @JoinColumn(name = "aeroport_arrive_id")
     private Aeroport aeroportArrive;
+
+    @OneToMany(mappedBy = "vol", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Reservation> reservations;
 }

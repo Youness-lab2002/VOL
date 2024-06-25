@@ -28,10 +28,15 @@ public class VolService {
         return volRepo.findById(id).orElseThrow(()->new RuntimeException("vol not exist"));
     }
 
-    public Vol saveVol(Vol vol) {
-        return volRepo.save(vol);
+    public void saveVol(Vol vol) {
+        volRepo.save(vol);
     }
-
+    public void updateVol(Long id, Vol vol) {
+        if (volRepo.existsById(id)) {
+            vol.setId(id);
+            volRepo.save(vol);
+        }
+    }
     public void deleteVol(Long id) {
         volRepo.deleteById(id);
     }
