@@ -2,6 +2,7 @@ package ma.emsi.bookingflight.controllers;
 
 
 
+import ma.emsi.bookingflight.entities.Aeroport;
 import ma.emsi.bookingflight.entities.Vol;
 import ma.emsi.bookingflight.service.VolService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/vols")
+@RequestMapping("user/vols")
 public class VolController {
     @Autowired
     private VolService volService;
@@ -67,8 +68,9 @@ public class VolController {
     }
 
     @GetMapping("/search")
-    public String searchVols(@RequestParam LocalDateTime dateDepart, @RequestParam LocalDateTime dateArrive, Model model) {
-        List<Vol> vols = volService.searchVols(dateDepart, dateArrive);
+    public String searchVols(@RequestParam LocalDateTime dateDepart, @RequestParam Aeroport aeroportArrive, @RequestParam Aeroport aeroportDepart, Model model) {
+        List<Vol> vols = volService.searchVols(dateDepart,aeroportDepart, aeroportArrive);
         model.addAttribute("vols", vols);
         return "vols/list";  // la vue list.html sous templates/vols/
     }
+}

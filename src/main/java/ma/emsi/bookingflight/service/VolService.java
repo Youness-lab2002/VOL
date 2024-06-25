@@ -1,6 +1,7 @@
 package ma.emsi.bookingflight.service;
 
 
+import ma.emsi.bookingflight.entities.Aeroport;
 import ma.emsi.bookingflight.entities.Vol;
 import ma.emsi.bookingflight.repositories.VolRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,14 @@ public class VolService {
     }
 
     public Vol saveVol(Vol vol) {
-        return
+        return volRepo.save(vol);
     }
 
     public void deleteVol(Long id) {
+        volRepo.deleteById(id);
     }
 
-    public List<Vol> searchVols(LocalDateTime dateDepart, LocalDateTime dateArrive) {
+    public List<Vol> searchVols(LocalDateTime dateDepart, Aeroport aeroportDepart,Aeroport aeroportArrive){
+        return volRepo.findByDateDepartAndAeroportArriveAndAeroportDepart(dateDepart,aeroportDepart,aeroportArrive);
     }
 }
