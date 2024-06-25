@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Recherche de Vols</title>
+</head>
+<body>
+<h1>Recherche de Vols</h1>
+<form th:action="@{/user/vols/search}" method="get">
+  <div>
+    <label for="dateDepart">Date de Départ:</label>
+    <input type="datetime-local" id="dateDepart" name="dateDepart" required />
+  </div>
+  <div>
+    <label for="aeroportDepart">Aéroport de Départ:</label>
+    <select id="aeroportDepart" name="aeroportDepart">
+      <option th:each="aeroport : ${aeroports}" th:value="${aeroport.id}" th:text="${aeroport.name}"></option>
+    </select>
+  </div>
+  <div>
+    <label for="aeroportArrive">Aéroport d'Arrivée:</label>
+    <select id="aeroportArrive" name="aeroportArrive">
+      <option th:each="aeroport : ${aeroports}" th:value="${aeroport.id}" th:text="${aeroport.name}"></option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Rechercher</button>
+  </div>
+</form>
+</body>
+</html>

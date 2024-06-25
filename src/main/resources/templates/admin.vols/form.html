@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulaire Vol</title>
+</head>
+<body>
+<h1 th:if="${vol.id}">Modifier Vol</h1>
+<h1 th:if="${vol.id == null}">Créer un Nouveau Vol</h1>
+<form th:action="@{${vol.id != null} ? '/admin/vols/' + ${vol.id} : '/admin/vols'}" th:object="${vol}" method="post">
+    <div>
+        <label for="dateDepart">Date de Départ:</label>
+        <input type="datetime-local" id="dateDepart" th:field="*{dateDepart}" required />
+    </div>
+    <div>
+        <label for="aeroportDepart">Aéroport de Départ:</label>
+        <select id="aeroportDepart" th:field="*{aeroportDepart.id}">
+            <option th:each="aeroport : ${aeroports}" th:value="${aeroport.id}" th:text="${aeroport.name}"></option>
+        </select>
+    </div>
+    <div>
+        <
