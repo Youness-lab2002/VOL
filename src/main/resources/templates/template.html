@@ -10,23 +10,25 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-md">
-    <a class="navbar-brand" th:href="@{/}">KhirLina</a>
+    <a class="navbar-brand" th:href="@{/}">BookingFlight</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" th:href="@{/action/all}">Action</a>
+          <a class="nav-link active" th:href="@{/user/vols}">VOLS</a>
+        </li><li class="nav-item">
+          <a class="nav-link active" th:href="@{/admin/vols}">VOLS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/admin/members}">Members</a>
+          <a class="nav-link" th:href="@{/admin/aeroports}">AEROPORT</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" th:href="@{/admin/users}">Users</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/about}">À propos</a>
+          <a class="nav-link" th:href="@{/aPropos}">À propos</a>
         </li>
       </ul>
     </div>
@@ -36,7 +38,7 @@
 <section layout:fragment="content" class="min-vh-100">
 </section>
 <footer class="bg-light text-center py-3">
-  <p>&copy; 2024 khire lina</p>
+  <p>&copy; 2024 BookingFlight</p>
 </footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

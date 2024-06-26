@@ -24,7 +24,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests((request -> request
-                        .requestMatchers("/user/Signup","/user/saveUser").permitAll()
+                        .requestMatchers("/user/vols/Signup","/user/vols/saveUser").permitAll()
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/admin/**").hasAuthority("ROLE_admin")
                         .requestMatchers("/user/home").permitAll()
@@ -32,7 +32,7 @@ public class SecurityConfig {
                         .anyRequest().permitAll())
 
 
-                ).formLogin(Loginform -> Loginform.defaultSuccessUrl("/user"));
+                ).formLogin((form) -> form.loginProcessingUrl("/perform_login").successHandler(successHandler).permitAll());
         return http.build();
     }
     @Bean

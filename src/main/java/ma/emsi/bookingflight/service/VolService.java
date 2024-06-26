@@ -1,6 +1,7 @@
 package ma.emsi.bookingflight.service;
 
 
+import ma.emsi.bookingflight.entities.Aeroport;
 import ma.emsi.bookingflight.entities.Vol;
 import ma.emsi.bookingflight.repositories.VolRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +28,20 @@ public class VolService {
         return volRepo.findById(id).orElseThrow(()->new RuntimeException("vol not exist"));
     }
 
-    public Vol saveVol(Vol vol) {
-        return null;
+    public void saveVol(Vol vol) {
+        volRepo.save(vol);
     }
-
+    public void updateVol(Long id, Vol vol) {
+        if (volRepo.existsById(id)) {
+            vol.setId(id);
+            volRepo.save(vol);
+        }
+    }
     public void deleteVol(Long id) {
+        volRepo.deleteById(id);
     }
 
-    public List<Vol> searchVols(LocalDateTime dateDepart, LocalDateTime dateArrive) {
-    return null;
+    public List<Vol> searchVols(LocalDateTime dateDepart, Aeroport aeroportDepart,Aeroport aeroportArrive){
+        return volRepo.findByDateDepartAndAeroportArriveAndAeroportDepart(dateDepart,aeroportDepart,aeroportArrive);
     }
 }

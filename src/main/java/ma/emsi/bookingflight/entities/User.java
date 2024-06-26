@@ -34,6 +34,8 @@ public class User implements UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private List<Role> roles=new ArrayList<>();
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    private List<Reservation> reservations;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

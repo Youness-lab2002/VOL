@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <meta charset="UTF-8">
+  <title>BookingFlight</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  .content {
+    padding: 20px;
+    text-align: center;
+  }
+  .content h1 {
+    color: #333;
+  }
+  .content p {
+    color: #666;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  .buttons {
+    margin-top: 20px;
+  }
+  .buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    color: white;
+    background-color: #4CAF50;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .buttons a:hover {
+    background-color: #45a049;
+  }
+  .images {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .images img {
+    margin: 10px;
+    border-radius: 10px;
+    width: 300px;
+    height: auto;
+  }
+  .footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+</style>
+<body>
+<div layout:fragment="content" class="container mt-5">
+  <div class="header">
+    <h1>Gestion des Vols et Réservations</h1>
+  </div>
+  <div class="content">
+    <h1>Bienvenue sur notre application de gestion des vols et des réservations</h1>
+    <p>Cette application vous permet de gérer efficacement les vols et les réservations. Que vous soyez un utilisateur à la recherche de vols ou un administrateur gérant les réservations et les vols, notre application offre des fonctionnalités complètes pour répondre à vos besoins.</p>
+    <p>Découvrez les vols disponibles, faites des réservations facilement, et pour les administrateurs, gérez les vols et les réservations des utilisateurs en toute simplicité.</p>
+    <div class="buttons">
+      <a th:href="@{/user/vols}">Voir les Vols</a>
+      <a th:href="@{/user/reservations}">Voir mes Réservations</a>
+      <a th:href="@{/admin/vols}">Administration des Vols</a>
+      <a th:href="@{/admin/reservations}">Administration des Réservations</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

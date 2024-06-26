@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <meta charset="UTF-8">
+    <title>BookingFlight</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content" class="container mt-5">
+    <h1 class="mb-4">Détails du Vol</h1>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">Date de Départ: <span th:text="${vol.dateDepart}">Date de Départ</span></p>
+            <p class="card-text">Date d'Arrivée: <span th:text="${vol.dateArrive}">Date d'Arrivée</span></p>
+            <p class="card-text">Aéroport de Départ: <span th:text="${vol.aeroportDepart.name}">Aéroport de Départ</span></p>
+            <p class="card-text">Aéroport d'Arrivée: <span th:text="${vol.aeroportArrive.name}">Aéroport d'Arrivée</span></p>
+        </div>
+    </div>
+    <a th:href="@{/user/vols}" class="btn btn-primary mt-3">Retour à la liste</a>
+</div>
+</body>
+</html>
