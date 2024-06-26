@@ -26,10 +26,17 @@ public class DataLoader implements CommandLineRunner{
     @Override
     public void run(String... args) throws Exception {
         Aeroport aeroport=new Aeroport(1L,"Mohemmed5","casablanca","MAROC");
-        Aeroport aeroport1=new Aeroport(2L,"dubai","dubai","UAE");
+        Aeroport aeroport1=new Aeroport(2L,"Aéroport international de Dubaï","Dubaï","Émirats arabes unis");
+        Aeroport aeroport3=new Aeroport(2L,"Aéroport international du Caire"," Le Caire","Égypte");
+        Aeroport aeroport4=new Aeroport(2L,"Aéroport international Roi Khaled","Riyad","Qatar");
+        Aeroport aeroport5=new Aeroport(2L,"Aéroport international de Beyrouth-Rafic Hariri","Beyrouth","Liban");
 
         aeroportRepo.save(aeroport);
         aeroportRepo.save(aeroport1);
+        aeroportRepo.save(aeroport3);
+        aeroportRepo.save(aeroport4);
+        aeroportRepo.save(aeroport5);
+
         for(int i=1;i<=10;i++){
             Vol vol=new Vol((long) i, LocalDateTime.now(),LocalDateTime.now(),aeroport,aeroport1,null);
             volRepo.save(vol);

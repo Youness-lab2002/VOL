@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <meta charset="UTF-8">
+  <title>BookingFlight</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding-top: 20px;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .about-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .about-header h1 {
+      color: #333;
+    }
+    .about-header p {
+      color: #666;
+      font-size: 1.2em;
+    }
+    .about-section {
+      margin-bottom: 20px;
+    }
+    .about-section h2 {
+      color: #4CAF50;
+    }
+    .about-section p {
+      color: #555;
+      line-height: 1.6em;
+    }
+    .about-images {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+    .about-images img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+<div layout:fragment="content" class="min-vh-100">
+<div class="container">
+  <div class="about-header">
+    <h1>À propos de BookingFlight</h1>
+    <p>Bienvenue sur BookingFlight, votre solution de gestion des vols et des réservations.</p>
+  </div>
+  <div class="about-section">
+    <h2>Notre Mission</h2>
+    <p>Notre mission est de fournir une plateforme facile à utiliser pour gérer les vols et les réservations, que ce soit pour les utilisateurs recherchant des vols ou pour les administrateurs gérant les réservations et les vols. Nous nous engageons à offrir des fonctionnalités complètes et une expérience utilisateur exceptionnelle.</p>
+  </div>
+  <div class="about-section">
+    <h2>Fonctionnalités Clés</h2>
+    <p>Avec BookingFlight, vous pouvez :</p>
+    <ul>
+      <li>Consulter et réserver des vols disponibles</li>
+      <li>Gérer les réservations existantes</li>
+      <li>Administrer les vols et les aéroports</li>
+      <li>Voir les détails des utilisateurs et leurs réservations</li>
+    </ul>
+  </div>
+  <div class="about-images">
+    <img src="https://via.placeholder.com/300x200" alt="Vols">
+    <img src="https://via.placeholder.com/300x200" alt="Réservations">
+    <img src="https://via.placeholder.com/300x200" alt="Administration">
+  </div>
+</div>
+<footer>
+  <p>&copy; 2024 BookingFlight. Tous droits réservés.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>
