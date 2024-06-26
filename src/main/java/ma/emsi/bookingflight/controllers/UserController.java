@@ -25,10 +25,11 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
-@RequestMapping("/user/vols")
+
 public class UserController {
 
     private final VolService volService;
@@ -48,7 +49,8 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
     }
-    @GetMapping
+    @GetMapping("/")
+
     public String getAllVols(Model model,Principal principale) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication!= null) {
@@ -62,45 +64,50 @@ public class UserController {
 
         List<Vol> vols = volService.getAllVols();
         model.addAttribute("vols", vols);
+        model.addAttribute("principal",principale);
         return "user/vols/list";  // la vue list.html sous templates/user/vols/
     }
-    @GetMapping("/{id}")
-    public String getVolById(@PathVariable Long id, Model model) {
+    @GetMapping("/user/vols/{id}")
+    public String getVolById(@PathVariable Long id, Model model,Principal principale) {
         Vol vol = volService.getVolById(id);
         model.addAttribute("vol", vol);
+        model.addAttribute("principal",principale);
         return "user/vols/view";  // la vue view.html sous templates/user/vols/
     }
-    @PostMapping("/{id}/reserve")
-    public String reserveVol(@PathVariable Long id, Principal principal) {
-        User user = userRepository.findByNom(principal.getName());
+    @PostMapping("/user/vols/{id}/reserve")
+    public String reserveVol(@PathVariable Long id,Model model, Principal principal) {
+        Optional<User> user = userRepository.findByEmail(principal.getName());
         Vol vol = volService.getVolById(id);
         Reservation reservation = new Reservation();
-        reservation.setUser(user);
+        reservation.setUser(user.get());
         reservation.setVol(vol);
         reservationRepo.save(reservation);
+        model.addAttribute("principal",principal);
         return "redirect:/user/vols/reservations";
     }
-    @GetMapping("/reservations")
+    @GetMapping("/user/vols/reservations")
     public String getUserReservations(Model model, Principal principal) {
         List<Reservation> res =new ArrayList<>();
-        User user = userRepository.findByNom(principal.getName());
-        for(Reservation i : user.getReservations()){
+        Optional<User> user = userRepository.findByEmail(principal.getName());
+        for(Reservation i : user.get().getReservations()){
             res.add(i);
         }
         model.addAttribute("reservations", res);
+        model.addAttribute("principal",principal);
         return "user/vols/reservations";  // la vue list.html sous templates/user/reservations/
     }
-    @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute User u){
+    @PostMapping("/user/vols/saveUser")
+    public String saveUser(@ModelAttribute User u,Model model,Principal principal){
         Role role=roleRepository.findByName("user");
         System.out.println("le role est : "+role);
         u.setRoles(new ArrayList<>());
         u.getRoles().add(role);
         u.setPassword(passwordEncoder.encode(u.getPassword()));
         userService.usersave(u);
+        model.addAttribute("principal",principal);
         return "redirect:/login";
     }
-    @GetMapping("/Signup")
+    @GetMapping("/user/vols/Signup")
     public String signup(){
         return "Signup";
     }

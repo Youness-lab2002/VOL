@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -25,4 +26,6 @@ public class Vol {
     @ManyToOne
     @JoinColumn(name = "aeroport_arrive_id")
     private Aeroport aeroportArrive;
+    @OneToMany(mappedBy = "vol",fetch = FetchType.EAGER)
+    private List<Reservation> reservation;
 }
