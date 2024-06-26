@@ -28,11 +28,14 @@ public class SecurityConfig {
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/admin/**").hasAuthority("ROLE_admin")
                         .requestMatchers("/user/home").permitAll()
-                        .requestMatchers("vols/hi").hasAuthority("ROLE_user")
+
                         .anyRequest().permitAll())
 
 
-                ).formLogin((form) -> form.loginProcessingUrl("/perform_login").successHandler(successHandler).permitAll());
+                ).formLogin((form) -> form.loginPage("/login").loginProcessingUrl("/perform_login").successHandler(successHandler).permitAll())
+                .logout((logout) -> logout.permitAll()
+                        .logoutUrl("/logout").logoutSuccessUrl("/")
+                ).userDetailsService(userLoadService);
         return http.build();
     }
     @Bean
