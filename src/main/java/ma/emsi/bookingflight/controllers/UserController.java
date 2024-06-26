@@ -25,6 +25,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -72,10 +73,10 @@ public class UserController {
     }
     @PostMapping("/{id}/reserve")
     public String reserveVol(@PathVariable Long id, Principal principal) {
-        User user = userRepository.findByNom(principal.getName());
+        Optional<User> user = userRepository.findByEmail(principal.getName());
         Vol vol = volService.getVolById(id);
         Reservation reservation = new Reservation();
-        reservation.setUser(user);
+        reservation.setUser(user.get());
         reservation.setVol(vol);
         reservationRepo.save(reservation);
         return "redirect:/user/vols/reservations";
@@ -83,8 +84,8 @@ public class UserController {
     @GetMapping("/reservations")
     public String getUserReservations(Model model, Principal principal) {
         List<Reservation> res =new ArrayList<>();
-        User user = userRepository.findByNom(principal.getName());
-        for(Reservation i : user.getReservations()){
+        Optional<User> user = userRepository.findByEmail(principal.getName());
+        for(Reservation i : user.get().getReservations()){
             res.add(i);
         }
         model.addAttribute("reservations", res);
