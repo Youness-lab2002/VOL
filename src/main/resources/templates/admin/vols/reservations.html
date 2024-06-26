@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+  <meta charset="UTF-8">
+  <title>BookingFlight</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Liste des Réservations</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Utilisateur</th>
+    <th>Vol</th>
+    <th>Date de Départ</th>
+    <th>Aéroport de Départ</th>
+    <th>Aéroport d'Arrivée</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="reservation : ${reservations}">
+    <td th:text="${reservation.id}">ID</td>
+    <td th:text="${reservation.user.username}">Utilisateur</td>
+    <td th:text="${reservation.vol.id}">Vol</td>
+    <td th:text="${reservation.vol.dateDepart}">Date de Départ</td>
+    <td th:text="${reservation.vol.aeroportDepart.name}">Aéroport de Départ</td>
+    <td th:text="${reservation.vol.aeroportArrive.name}">Aéroport d'Arrivée</td>
+    <td>
+      <a th:href="@{/admin/reservations/{id}(id=${reservation.id})}">Voir</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
+

@@ -16,6 +16,7 @@ import java.util.List;
 @Builder
 public class Vol {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime dateDepart;
     private LocalDateTime  dateArrive;

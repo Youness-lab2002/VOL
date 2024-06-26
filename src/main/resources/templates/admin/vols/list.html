@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
 <head>
     <meta charset="UTF-8">
-    <title>KhirLina</title>
+    <title>BookingFlight</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
     <style>
         /* CSS personnalisé */
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<section layout:fragment="content" class="min-vh-100">
+<div layout:fragment="content" class="min-vh-100">
 
 <div class="container mt-5">
     <h1 class="mb-4">Liste des Vols</h1>
@@ -37,9 +37,9 @@
             <td th:text="${vol.aeroportArrive.name}">Aéroport d'Arrivée</td>
             <td>
                 <div class="table-actions">
-                    <a th:href="@{/user/vols/{id}(id=${vol.id})}" class="btn btn-info btn-sm">Voir</a>
-                    <a th:href="@{/user/vols/{id}/edit(id=${vol.id})}" class="btn btn-warning btn-sm">Modifier</a>
-                    <a th:href="@{/user/vols/{id}/delete(id=${vol.id})}" class="btn btn-danger btn-sm"
+                    <a th:href="@{/admin/vols/{id}(id=${vol.id})}" class="btn btn-info btn-sm">Voir</a>
+                    <a th:href="@{/admin/vols/{id}/edit(id=${vol.id})}" class="btn btn-warning btn-sm">Modifier</a>
+                    <a th:href="@{/admin/vols/{id}/delete(id=${vol.id})}" class="btn btn-danger btn-sm"
                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce vol?')">Supprimer</a>
                 </div>
             </td>
@@ -52,6 +52,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
 </body>
-</section>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template">
+<head>
+    <meta charset="UTF-8">
+    <title>BookingFlight</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        table {
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+    <h1 class="text-center">Liste des Aéroports</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Ville</th>
+            <th>Pays</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aeroport : ${aeroports}">
+            <td th:text="${aeroport.id}">ID</td>
+            <td th:text="${aeroport.name}">Nom</td>
+            <td th:text="${aeroport.ville}">Ville</td>
+            <td th:text="${aeroport.pays}">Pays</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

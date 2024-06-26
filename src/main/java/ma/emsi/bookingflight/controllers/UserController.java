@@ -14,8 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.List;
 
 
@@ -33,14 +32,12 @@ public class UserController {
         this.reservationRepo = reservationRepo;
         this.userRepository = userRepository;
     }
-
     @GetMapping
     public String getAllVols(Model model) {
         List<Vol> vols = volService.getAllVols();
         model.addAttribute("vols", vols);
         return "user/vols/list";  // la vue list.html sous templates/user/vols/
     }
-
     @GetMapping("/{id}")
     public String getVolById(@PathVariable Long id, Model model) {
         Vol vol = volService.getVolById(id);
@@ -57,7 +54,6 @@ public class UserController {
         reservationRepo.save(reservation);
         return "redirect:/user/vols/reservations";
     }
-
     @GetMapping("/reservations")
     public String getUserReservations(Model model, Principal principal) {
         User user = userRepository.findByUsername(principal.getName());
