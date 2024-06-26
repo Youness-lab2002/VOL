@@ -28,12 +28,13 @@ public class VolService {
     }
 
     public Vol saveVol(Vol vol) {
-        return
+        return null;
     }
 
     public void deleteVol(Long id) {
     }
 
     public List<Vol> searchVols(LocalDateTime dateDepart, LocalDateTime dateArrive) {
+    return null;
     }
 }

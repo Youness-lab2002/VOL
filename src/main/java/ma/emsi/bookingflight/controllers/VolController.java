@@ -26,7 +26,10 @@ public class VolController {
         model.addAttribute("vols", vols);
         return "vols/list";  // la vue list.html sous templates/vols/
     }
-
+    @GetMapping("/hi")
+    public String hi(){
+        return "amine.html";
+    }
     @GetMapping("/{id}")
     public String getVolById(@PathVariable Long id, Model model) {
         Vol vol = volService.getVolById(id);
@@ -72,3 +75,4 @@ public class VolController {
         model.addAttribute("vols", vols);
         return "vols/list";  // la vue list.html sous templates/vols/
     }
+}
